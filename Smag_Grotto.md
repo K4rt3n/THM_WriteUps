@@ -3,6 +3,14 @@
   <img src="https://i.imgur.com/o08Runb.png">
 </p>
 
+## Summary
+- [Step 1 : Nmap Scan](#step-1--nmap-scan)
+- [Step 2 : Website enumeration](#step-2--website-enumeration)
+- [Step 3 : Exploiting the website to get a reverse-shell](#step-3--exploiting-the-website-to-get-a-reverse-shell)
+- [Step 4 : Get access to another user than www-data](#step-4--get-access-to-another-user-than-www-data)
+- [Final step : Privilège escalation](#final-step--privilege-escalation)
+
+
 ## Step 1 : NMAP Scan
 First , we need to scan the target to find open ports.  
 ```nmap 10.10.21.185 -oN nmapResult``` (I always store the nmap scan result in a file).    
@@ -34,7 +42,7 @@ We also maybe have a domain name : smag.thm
 
 
 So we found some interesting things in this pcap file :   
-- In the pcap file, there is a domain name : ```development.smag.thm```  
+- In the pcap file, there is a hostname : ```development.smag.thm```  
 - There is also credentials used in a login.php page  
 
 To access the website development section, I added the line ```10.10.21.185    development.smag.thm``` to the file ```/etc/hosts``` on my machine.  
@@ -45,6 +53,11 @@ Now, if a enter ```http://development.smag.thm/``` in the address bar, i enter t
 There is two files in here :
 - admin.php -> if not logged in, it redirects us to login.php.  
 - login.php -> here we can use the credentials we found before in the pcap file.  
+
+
+So let's try to use the credentials we found in the pcap file to login on the login.php page.
+![alt text](https://i.imgur.com/SmbKqGc.png)  
+
 
 And we are logged in !  
 We are automatically redirected to admin.php.  
@@ -78,7 +91,7 @@ We can see that there is a file named ```.sudo_as_admin_successful```, that mean
 
 One interesting thing here is that we have a cron task that copy ```/opt/.backups/jake_id_rsa.pub.backup``` to ```/home/jake/.ssh/authorized_keys```. The copied file is probably a public SSH key. After a little bit of research, I found something interesting about SSH public keys here : https://steflan-security.com/linux-privilege-escalation-exploiting-misconfigured-ssh-keys/. As I thought, it is possible to add our own public key to the authorized_keys file to then connect to the target without any password.  
 
-So let's check if we can write to the ```/opt/.backups/jake_id_rsa.pub.backup file``` with ```ls -l /opt/.backups/jake_id_rsa.pub.backup```.  
+So let's check if we can write to the ```/opt/.backups/jake_id_rsa.pub.backup```file with ```ls -l /opt/.backups/jake_id_rsa.pub.backup```.  
 ![alt text](https://i.imgur.com/YxCuEme.png)  
 
 
