@@ -3,12 +3,13 @@
   <img src="https://i.imgur.com/o08Runb.png">
 </p>
 
-## Summary
+## Table of contents
 - [Step 1 : Nmap Scan](#step-1--nmap-scan)
 - [Step 2 : Website enumeration](#step-2--website-enumeration)
 - [Step 3 : Exploiting the website to get a reverse-shell](#step-3--exploiting-the-website-to-get-a-reverse-shell)
 - [Step 4 : Get access to another user than www-data](#step-4--get-access-to-another-user-than-www-data)
 - [Final step : Privilège escalation](#final-step--privilege-escalation)
+- [Conclusion](#conclusion)
 
 
 ## Step 1 : NMAP Scan
@@ -123,5 +124,10 @@ And we have a root shell ! Now we can get the root flag with ```cat /root/root.t
 ![alt text](https://i.imgur.com/Ln7GE8p.png)  
 
 
+## Conclusion
+- Mails shouldn't be publicly accessible.
+- There shouldn't be a publicly accessible pcap file.
+- www-data user should'nt have write permissions on the file ```/opt/.backups/jake_id_rsa_pub.backup```. Maybe we can change the owner of the file with ```chown jake /opt/.backups/jake_id_rsa_pub.backup```and then, delete the write permission for other users than jake with ```chmod 600 /opt/.backups/jake_id_rsa_pub.backup```. So now only user jake can read or write to this file.
+- Maybe we can filter commands on the website to avoid reverse shells
 
 Thanks for reading my first write up ! (PS : I'm a beginner in pentesting and CTFs and english is not my native language).
