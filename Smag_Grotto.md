@@ -47,7 +47,7 @@ So we found some interesting things in this pcap file :
 - There is also credentials used in a login.php page  
 
 To access the website development section, I added the line ```10.10.21.185    development.smag.thm``` to the file ```/etc/hosts``` on my machine.  
-Now, if a enter ```http://development.smag.thm/``` in the address bar, i enter the hidden development section of the website.  
+Now, if I enter ```http://development.smag.thm/``` in the address bar, i enter the hidden development section of the website.  
 ![alt text](https://i.imgur.com/zSFc88j.png)  
 
 
