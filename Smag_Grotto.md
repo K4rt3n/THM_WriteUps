@@ -14,7 +14,7 @@
 
 ## Step 1 : NMAP Scan
 First , we need to scan the target to find open ports.  
-```nmap 10.10.21.185 -oN nmapResult``` (I always store the nmap scan result in a file).    
+```nmap 10.10.21.185 -A -oN nmapResult``` (I always store the nmap scan result in a file).    
 ![alt text](https://i.imgur.com/qnZT0cl.png)  
 We see 2 open ports :  
 - port 22 for ssh  
