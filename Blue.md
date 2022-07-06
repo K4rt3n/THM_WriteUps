@@ -411,5 +411,5 @@ Just use cat to read the flag3.txt file.
 Answer : *hidden* (Just do it by yourself)
 
 ## Conclusion
-This room was made to introduce us to pentesting on a windows machine. For me, the port scanning and the exploit research part is the same as on linux machine. 
+This room was made to introduce us to pentesting on a windows machine. For me, the port scanning and the exploit research part is similar as on linux machine. 
 But the privilege escalation part is very different. It's the first time I do pentest on a windows machine. Thanks for reading my write up ! 
