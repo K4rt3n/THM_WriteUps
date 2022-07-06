@@ -1,5 +1,5 @@
 <p align="center">
-  THM : CTF Smag Grotto<br>
+  THM : Smag Grotto<br>
   <img src="https://i.imgur.com/o08Runb.png">
 </p>
 
