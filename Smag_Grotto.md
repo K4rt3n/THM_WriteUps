@@ -1,4 +1,4 @@
-<p style='font-size: 200px' align="center">
+<p align="center">
   THM : CTF Smag Grotto<br>
   <img src="https://i.imgur.com/o08Runb.png">
 </p>
